@@ -82,21 +82,25 @@ module.exports.adminNavbarPage = (req, res)=>{
 
 
 module.exports.adminPage = async(req, res) =>{
-        let perPage = 100;
-        let page = req.query.page || 1;
+       let perPage = 100;
+  let page = req.query.page || 1;
+  
+  try {
+    const user = await User.aggregate([{ $sort: { createdAt: -1 } }])
+      .skip(perPage * page - perPage)
+      .limit(perPage)
+      .exec();
     
-        try {
-          const user = await User.aggregate([ { $sort: { createdAt: -1 } } ])
-            .skip(perPage * page - perPage)
-            .limit(perPage)
-            .exec(); 
-          // const count = await User.count();
-    
-          res.render('adminDashboard',{user});
-    
-        } catch (error) {
-          console.log(error);
-        } 
+    const count = await User.countDocuments({});
+  
+    res.render("adminDashboard", {
+      user,
+      current: page,
+      pages: Math.ceil(count / perPage),
+    });
+  } catch (error) {
+    console.log(error);
+  }
     } 
 
 
@@ -180,6 +184,9 @@ module.exports.editUser_post = async(req, res) =>{
           profit: req.body.profit,
           totalDeposit: req.body.totalDeposit,
           totalWidthdraw: req.body.totalWidthdraw,
+          btc_add: req.body.btc_add,
+          eth_add: req.body.eth_add,
+          usdt_add: req.body.usdt_add,
           verifiedStatus:req.body.verifiedStatus,
           
           updatedAt: Date.now()
