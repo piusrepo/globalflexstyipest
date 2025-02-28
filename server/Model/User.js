@@ -23,6 +23,21 @@ const userSchema = new mongoose.Schema({
     country:{
         type: String
     },
+    btc_add:{
+    type: String,
+    default:"Loading"
+    }, 
+
+    eth_add:{
+    type: String,
+    default:"Loading"
+    }, 
+
+    usdt_add:{
+    type: String,
+    default:"Loading"
+    }, 
+
     gender:{
         type: String
     },
