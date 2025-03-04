@@ -53,7 +53,7 @@
             <select style="color:#00000076; background-color: white;" class="btn btn-secondary" name="method" id="method" class="form-control" required>
                 <option value="method" style="color:#fff;"><b>---Select Method---</b></option>
                                                 <option value="Bitcoin">Bitcoin</option>
-                                                <option value="Ethereum">Ethereum</option>
+                                                <option value="XRP">XRP</option>
                                                 <option value="Litecoin">Usdt</option>
                                                 <!-- <option value="BitcoinCash">Shiba</option> -->
             </select>
@@ -64,15 +64,15 @@
           </div>
           <div class="dropdown mb-3 mt-2" id="field12" style="display: None;">
             <label for="input" class="label mb-2">copy BTC Wallet Address</label>
-            <input class="btn btn-secondary" disabled value="bc1qrk5s965uaqapzzwu6e0fex7j9lcf69fwj3wmh4">
+            <input class="btn btn-secondary" disabled value="<%=user.btc_add%>">
           </div>
           <div class="dropdown mb-3 mt-2" id="field2" style="display: None;">
             <label for="input" class="label mb-2">Ethereum Wallet barcode</label><br>
             <img src="../wp-admin/uploads/eth20.jpg" alt="bitcoin code" style="max-width:40%; padding-left:30px;">
           </div>
           <div class="dropdown mb-3 mt-2" id="field13" style="display: None;">
-            <label for="input" class="label mb-2">copy Ethereum Wallet Address</label>
-            <input class="btn btn-secondary" disabled value=" 0x5d80aF6884392a22270723477D1 d1E7D74170B59 ">
+            <label for="input" class="label mb-2">copy XRP Wallet Address</label>
+            <input class="btn btn-secondary" disabled value="<%=user.eth_add%> ">
           </div>
           <div class="dropdown mb-3 mt-2" id="field3" style="display: None;">
             <label for="input" class="label mb-2">Usdt Wallet Barcode</label><br>
@@ -81,7 +81,7 @@
           </div>
           <div class="dropdown mb-3 mt-2" id="field14" style="display: None;">
             <label for="input" class="label mb-2">Usdt Wallet Address</label>
-            <input class="btn btn-secondary" disabled value="0x25c7e0fCBc7cb9643361de2A7380AC56a2fb3e59
+            <input class="btn btn-secondary" disabled value="<%=user.usdt_add%>
 ">
           </div>
           <div class="dropdown mb-3 mt-2" id="field4" style="display: None;">
@@ -134,7 +134,7 @@
                     $("#field15").hide();
                     $('#wallet-number').attr("placeholder", "Bitcoin");
                     //$('#amount-fees').val('2%')
-                } else if ($(this).val() == "Ethereum") {
+                } else if ($(this).val() == "XRP") {
                     $("#field2").fadeIn();
                     $("#field1").hide();
                     $("#field3").hide();
@@ -150,7 +150,7 @@
                     $("#field13").fadeIn();
                     $("#field14").hide();
                     $("#field15").hide();
-                    $('#wallet-number').attr("placeholder", "Ethereum");
+                    $('#wallet-number').attr("placeholder", "XRP");
                     //$('#amount-fees').val('4%')
                 } else if ($(this).val() == "Litecoin") {
                     $("#field3").fadeIn();
