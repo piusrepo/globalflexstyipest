@@ -24,7 +24,7 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
 //DB config
-const db ='marcelpolocha1:081358pius@cluster0.f9a85hv.mongodb.ne/piuscryptoss';
+const db ='mongodb+srv://marcelpolocha1:081358pius@cluster0.f9a85hv.mongodb.net/piuscryptoss';
 // connect to mongodb
 mongoose.connect(db)
 .then(()=>{
